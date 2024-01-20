@@ -1,5 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-def main_page(request):
+def index(request):
     return HttpResponse("NNES loves you")
