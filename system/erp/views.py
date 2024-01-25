@@ -2,4 +2,4 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse("NNES loves you")
+    return render(request,'erp/index.html',{})
