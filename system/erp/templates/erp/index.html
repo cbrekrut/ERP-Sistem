@@ -4,6 +4,17 @@
 
 {% block content %}
 <main>
+    <div class="cursor"></div>
+    <script>
+        var cursor = document.querySelector(".cursor");
+
+        function updateCursorPosition(e) {
+            requestAnimationFrame(function() {
+                cursor.style.cssText = "left: " + e.clientX + "px; top: " + e.clientY + "px;";
+            });
+        }
+        document.addEventListener("mousemove", updateCursorPosition);
+    </script>
     <section>
         <h2>Почему важно использовать ERP системы для развития бизнеса?</h2>
         <p>
@@ -16,6 +27,7 @@
             возможностям, способствующим росту и успешному развитию вашей компании.
         </p>
     </section>
+    
 </main>
 <footer>
     <!-- Напишите что-то для футера -->

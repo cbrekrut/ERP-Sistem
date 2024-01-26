@@ -4,6 +4,7 @@ body {
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    cursor: pointer;
 }
 
 header {
@@ -46,4 +47,17 @@ h2 {
 p {
     line-height: 1.6;
     color: #555;
+}
+
+.cursor{
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background-color: #000;
+    border-radius: 50%;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%);
+    transition: .1s;
+
 }
