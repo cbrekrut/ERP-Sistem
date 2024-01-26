@@ -5,7 +5,7 @@ from .forms import CustomUserCreationForm, CustomAuthenticationForm
 
 
 def index(request):
-    return render(request,'index',{})
+    return render(request,'erp/index.html',{})
 
 def signup(request):
     if request.method == 'POST':
@@ -19,7 +19,7 @@ def signup(request):
             return redirect('index')  # Замените 'index' на ваше имя URL для главной страницы
     else:
         form = CustomUserCreationForm()
-    return render(request, 'signup', {'form': form})
+    return render(request, 'registration/signup.html', {'form': form})
 
 def login_view(request):
     if request.method == 'POST':
@@ -33,7 +33,7 @@ def login_view(request):
                 return redirect('index')  # Замените 'index' на ваше имя URL для главной страницы
     else:
         form = CustomAuthenticationForm()
-    return render(request, 'login', {'form': form})
+    return render(request, 'registration/login.html', {'form': form})
 
 def logout_view(request):
     logout(request)
