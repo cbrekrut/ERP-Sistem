@@ -34,8 +34,11 @@ nav a {
     color: #fff;
     margin-left: 20px;
     font-weight: bold;
+    transition: color 0.3s;
 }
-
+nav a:hover{
+    color: #00b3ff;
+}
 main {
     max-width: 1200px;
     margin: 20px auto;

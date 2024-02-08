@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener("scroll", function() {
         var scroll = window.scrollY;
 
-        if (scroll >= 100) {
+        if (scroll >= 50) {
             text.classList.remove("hidden");
         } else {
             text.classList.add("hidden");
