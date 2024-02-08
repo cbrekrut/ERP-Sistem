@@ -1,0 +1,135 @@
+
+@import url('https://fonts.googleapis.com/css?family=Muli:300,400,700');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding-top: 5%;
+    background-color: #000000;
+    height: auto;
+    font-family: 'Muli', sans-serif;
+}
+
+header {
+    background-color: #222;
+    color: #fff;
+    padding: 10px 0;
+    position: fixed; /* Закрепляем шапку на верхней части страницы */
+    top: 0; /* Располагаем шапку вверху страницы */
+    width: 100%; /* Делаем ширину шапки равной ширине экрана */
+    z-index: 999; /* Устанавливаем z-index, чтобы шапка была выше других элементов */
+}
+
+header div {
+    max-width: 70%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.text {
+    padding: auto;
+    top: 60%;
+    transform: translateX(-50%);
+    list-style: none;
+    border-bottom: 0;
+}
+
+.text li {
+display: inline-block;
+float:left;
+font-weight: 700;
+font-size: 1em;
+color: #fff;
+opacity: 1;
+transition: all 1.0s ease-in-out;
+max-width: 2em;
+}
+
+.text.hidden li.spaced {
+padding-left: 0;
+}
+
+.text li.spaced {
+padding-left: 0.5em;
+}
+
+.text.hidden li.ghost {
+opacity: 0;
+max-width: 0;
+}
+
+body {
+    
+    margin: 0; /* Убираем отступы по умолчанию */
+    padding: 0; /* Убираем отступы по умолчанию */
+}
+.row {
+    display: flex; /* Используем флексбокс для распределения элементов в строку */
+    height: 50%;
+}
+.container {
+    background: #2f2f2f;
+    width: 20%;
+    height: 100%;
+    margin-left: 10px; /* Регулируем отступ слева по вашему усмотрению */
+    margin-right: 10px; /* Отступ между контейнером и графиками */
+    display: flex; /* Используем флексбокс для размещения элементов внутри контейнера */
+    flex-direction: column; /* Располагаем элементы в столбец */
+}
+
+.charts {
+    width: 100%; /* Ширина блока с графиками, можете настроить по вашему усмотрению */
+    display: flex; /* Используем флексбокс для размещения элементов внутри блока с графиками */
+}
+#kpi-chart,
+#revenue-chart {
+    width: 100%; /* Ширина графиков, можете настроить по вашему усмотрению */
+    height: 100%;
+}
+
+h1 {
+    color: #454545;
+    text-align: center;
+}
+
+.user-info {
+    flex: 1; /* Занимаем доступное пространство в высоту */
+    padding: 10px; /* Добавим немного отступов для внутреннего контента */
+}
+
+.company-name {
+    padding-top: 3%;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #93d4ff;
+}
+
+.position {
+    padding-top: 3%;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.full-name {
+    padding-top: 3%;
+    font-size: 1.3em;
+    color: #f2f2f2;
+}
+main {
+    margin-top: 4%;
+    background-color: #000000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

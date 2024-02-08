@@ -1,19 +1,52 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block link %} <link rel="stylesheet" href="{% static 'erp/index.css' %}">{% endblock %}
+{% block link %} <link rel="stylesheet" href="{% static 'erp/erp.css' %}">
+<link rel="stylesheet" href="https://cdn.plot.ly/plotly-latest.min.css">
+{% endblock %}
 {% block content %}
 <main>
-
-    <div class="container">
-        <h1>User Profile</h1>
-    
+    <div class="row">
+    <div class="container">    
         <div class="user-info">
             <p class="company-name">{{ user.factory.name }}</p>
-            <p class="position">{{ user.position }}</p>
             <p class="full-name">{{ user.first_name }} {{ user.last_name }}</p>
+            <p class="position">{{ user.role }}</p>
         </div>
     </div>
+    <div class="charts">
+        <div id="kpi-chart"></div>
+        <div id="revenue-chart"></div>
+</div>
+</div>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        var kpiData = {
+            x: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+            y: [10, 15, 7, 12, 18],
+            type: 'bar',
+            name: 'KPI',
+        };
     
+        // Пример данных для графика выручки (замените на ваши реальные данные)
+        var revenueData = {
+            x: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+            y: [2000, 2500, 1800, 2200, 2800],
+            type: 'line',
+            name: 'Revenue',
+        };
+        var layout = {
+        plot_bgcolor: '#000', // Черный фон графика
+        paper_bgcolor: '#000',
+        title: 'KPI', // Черный фон области вокруг графика
+        };
+        // Генерация графика KPI
+        Plotly.newPlot('kpi-chart', [kpiData],layout);
+        layout.title = 'Отгрузки'
+        // Генерация графика выручки
+        Plotly.newPlot('revenue-chart', [revenueData],layout);
+        <!-- Добавьте код для других графиков по необходимости -->
+    </script>
+
 </main>
 {% endblock %}
 

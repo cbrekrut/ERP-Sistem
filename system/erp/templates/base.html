@@ -1,6 +1,7 @@
 <!-- templates/base.html -->
 {% load static %}
 <script type="text/javascript" src="{% static "erp/nes_ani.js" %}"></script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,7 @@
 
 <header>
     <div>
-        <ul class="text hidden">
+        <ul class="text hidden" onclick="redirectToHomePage()">
             <li class="spaced">Н</li>
             <li class="ghost">е</li>
             <li class="ghost">й</li>
@@ -49,6 +50,11 @@
             <li class="ghost">м</li>
             <li class="ghost">ы</li>
         </ul>
+        <script>
+        function redirectToHomePage() {
+            window.location.href = '/'; // Укажите здесь путь к главной странице
+        }
+    </script>
         <nav>
             {% if user.is_authenticated %}
                 <a href="{% url 'erp' %}">ERP</a>

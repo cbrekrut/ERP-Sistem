@@ -7,7 +7,7 @@
 
 body {
     background-color: #000;
-    height: 200vh;
+    height: auto;
     font-family: 'Muli', sans-serif;
 }
 
@@ -149,6 +149,7 @@ p {
 }
 
 .text {
+    cursor: pointer;
     padding: auto;
     top: 60%;
     transform: translateX(-50%);
@@ -157,14 +158,15 @@ p {
 }
 
 .text li {
-display: inline-block;
-float:left;
-font-weight: 700;
-font-size: 1em;
-color: #fff;
-opacity: 1;
-transition: all 1.0s ease-in-out;
-max-width: 2em;
+    cursor: pointer;
+    display: inline-block;
+    float:left;
+    font-weight: 700;
+    font-size: 1em;
+    color: #fff;
+    opacity: 1;
+    transition: all 1.0s ease-in-out;
+    max-width: 2em;
 }
 .text.hidden li.spaced {
 padding-left: 0;
