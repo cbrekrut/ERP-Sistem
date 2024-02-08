@@ -40,7 +40,7 @@ nav a:hover{
     color: #00b3ff;
 }
 main {
-    max-width: 1200px;
+    max-width: 85%;
     margin: 20px auto;
     padding: 20px;
     background-color: #000000;
@@ -48,18 +48,18 @@ main {
 }
 
 .main-part {
-    margin-top: 10%;
+    margin-top: 1%;
     border-radius: 50%;
-    width: 10em;
-    height: 10em;
-    padding-top: 15%;
+    width: 15em;
+    height: 15em;
+    padding-top: 1%;
     padding-left: 2%;
     background: #1abc9c;
     transition: .8s ease-in-out;
 }
 
 .main-part:hover {
-    padding-top: 2%;
+    padding-top: 1%;
     width: 100%;
     border-radius: 0;
     height: 30%;
@@ -69,12 +69,12 @@ main {
 .main-part:hover p {
     transition: .8s ease-in-out;
     opacity: 1;
-    font-size: 1.4em;
+    font-size: 1em;
 }
 
 .main-part:hover h2 {
     transition: .6s ease-in-out;
-    margin-top: 20px;
+    margin-top: 1%;
 }
 
 h2 {
@@ -98,9 +98,9 @@ p {
 .main-part-2 {
     margin-left: 70%;
     border-radius: 50%;
-    width: 45%;
-    height: 13%;
-    padding-top: 15%;
+    width: 13em;
+    height: 13em;
+    padding-top: 1%;
     background: #bc931a;
     transition: .8s ease-in-out;
     text-align: center;
@@ -115,7 +115,7 @@ p {
 .main-part-2:hover p {
     transition: .8s ease-in-out;
     opacity: 1;
-    font-size: 1.4em;
+    font-size: 1em;
 }
 
 .main-part-2:hover h2 {
@@ -125,9 +125,9 @@ p {
 
 .main-part-3 {
     border-radius: 50%;
-    width: 45%;
-    height: 13%;
-    padding-top: 15%;
+    width: 150px;
+    height: 150px;
+    padding-top: 1%;
     background: #ff23c4;
     transition: .8s ease-in-out;
     text-align: center;
