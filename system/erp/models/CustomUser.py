@@ -17,12 +17,14 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         ('worker', 'Рабочий'),
     )
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='worker')
-
+    subordinates = models.ManyToManyField('self', symmetrical=False, blank=True)
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']
-
+    def get_full_name(self):
+        return f"{self.first_name} {self.last_name}"
+        
     def __str__(self):
         return self.email
 

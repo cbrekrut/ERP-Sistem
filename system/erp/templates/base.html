@@ -6,9 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.84.0">
-    <title>Dashboard Template · Bootstrap v5.0</title>
+    <link rel="stylesheet" href="{% static 'erp/css/nes_ani.css' %}">
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
     <title>{% block title %}{% endblock %}</title>
@@ -16,16 +14,50 @@
 
 </head>
 <body>
+<script src="{% static "erp/js/nes_ani.js"%}"></script>
 {% if user.is_authenticated %}
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
+    <a class="navbar-brand col-md-12 col-lg-4 me-0 px-3" href="#"><ul class="text hidden">
+                    <li class="spaced">Н</li>
+                    <li class="ghost">е</li>
+                    <li class="ghost">й</li>
+                    <li class="ghost">р</li>
+                    <li class="ghost">о</li>
+                    <li class="ghost">с</li>
+                    <li class="ghost">е</li>
+                    <li class="ghost">т</li>
+                    <li class="ghost">е</li>
+                    <li class="ghost">в</li>
+                    <li class="ghost">ы</li>
+                    <li class="ghost">е</li>
+                    
+                    <li class="spaced">Э</li>
+                    <li class="ghost">л</li>
+                    <li class="ghost">е</li>
+                    <li class="ghost">к</li>
+                    <li class="ghost">т</li>
+                    <li class="ghost">р</li>
+                    <li class="ghost">о</li>
+                    <li class="ghost">н</li>
+                    <li class="ghost">н</li>
+                    <li class="ghost">ы</li>
+                    <li class="ghost">е</li>
+                    
+                    
+                    <li class="spaced">С</li>
+                    <li class="ghost">и</li>
+                    <li class="ghost">с</li>
+                    <li class="ghost">т</li>
+                    <li class="ghost">е</li>
+                    <li class="ghost">м</li>
+                    <li class="ghost">ы</li>
+                </ul></a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
     <div class="navbar-nav">
         <div class="nav-item text-nowrap">
-        <a class="nav-link px-3" href="#">Sign out</a>
+        <a class="nav-link px-3" href="{% url 'logout' %}">Выйти</a>
         </div>
     </div>
     </header>
@@ -34,7 +66,8 @@
     <div class="container">
         <div class="row">
             <div class="header-col">
-                <a href="/"><ul class="text hidden">
+                <a href="/">
+                <ul class="text hidden">
                     <li class="spaced">Н</li>
                     <li class="ghost">е</li>
                     <li class="ghost">й</li>
