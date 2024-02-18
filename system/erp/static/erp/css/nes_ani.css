@@ -8,9 +8,7 @@ header {
     z-index: 999; /* Устанавливаем z-index, чтобы шапка была выше других элементов */
 }
 
-@import url('https://fonts.googleapis.com/css?family=Muli:300,400,700');
-
-header div {
+.header-col {
     max-width: 70%;
     margin: auto;
     display: flex;
@@ -23,34 +21,35 @@ nav a {
     color: #fff;
     margin-left: 20px;
     font-weight: bold;
-    transition: color 0.3s; /* Плавное изменение цвета при наведении */
+    transition: color 0.3s;
 }
 nav a:hover{
     color: #00b3ff;
 }
 
 .text {
+    cursor: pointer;
     padding: auto;
     top: 60%;
     list-style: none;
     border-bottom: 0;
+    margin-bottom: 0;
 }
 
 .text li {
-display: inline-block;
-float:left;
-font-weight: 700;
-font-size: 1em;
-color: #fff;
-opacity: 1;
-transition: all 1.0s ease-in-out;
-max-width: 2em;
+    cursor: pointer;
+    display: inline-block;
+    float:left;
+    font-weight: 700;
+    font-size: 1em;
+    color: #fff;
+    opacity: 1;
+    transition: all 1.0s ease-in-out;
+    max-width: 2em;
 }
-
 .text.hidden li.spaced {
 padding-left: 0;
 }
-
 .text li.spaced {
 padding-left: 0.5em;
 }
