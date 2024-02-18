@@ -107,8 +107,7 @@ body {
 .row {
     margin-top: 1%;
     display: flex;
-    flex-grow: 8; /* Используем флексбокс для распределения элементов в строку */
-    width: 100%;
+    flex-wrap: wrap;
     height: auto
 }
 .container {
@@ -172,10 +171,10 @@ main {
 .tasks {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    flex: 1 1 20%;
 }
 
 .task-column {
-    flex: 1 1 100%;
     padding: 5%;
     margin: 3%;
     border: 1px solid #ccc;
