@@ -43,7 +43,6 @@ main {
 .text {
     padding: auto;
     top: 60%;
-    transform: translateX(-50%);
     list-style: none;
     border-bottom: 0;
 }
