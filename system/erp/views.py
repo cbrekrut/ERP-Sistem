@@ -6,7 +6,11 @@ from .forms import CustomUserCreationForm, CustomAuthenticationForm
 
 def index(request):
     return render(request,'erp/index.html',{})
-#
+
+def customers(request):
+    user = request.user
+    return render(request,'erp/erpCustomers.html',)
+    
 def erp(request):
     user = request.user  # Получаем текущего пользователя
     return render(request, 'erp/erp.html', {'user': user})

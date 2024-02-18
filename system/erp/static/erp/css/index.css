@@ -21,7 +21,7 @@ header {
     z-index: 999; /* Устанавливаем z-index, чтобы шапка была выше других элементов */
 }
 
-header div {
+.header-col {
     max-width: 70%;
     margin: auto;
     display: flex;
@@ -138,6 +138,7 @@ p {
     transform: translateX(-50%);
     list-style: none;
     border-bottom: 0;
+    margin-bottom: 0;
 }
 
 .text li {
