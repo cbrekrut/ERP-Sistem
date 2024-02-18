@@ -1,115 +1,261 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block link %} <link rel="stylesheet" href="{% static 'erp/erp.css' %}">
+{% block link %} 
+<link rel="stylesheet" href="{% static 'erp/erp.css' %}">
 <link rel="stylesheet" href="https://cdn.plot.ly/plotly-latest.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
 {% endblock %}
 {% block content %}
 <main>
-    <div class="menu">
-        {% if user.role == 'director' %}
-        <ul>
-            <li><a href="#production">Производство</a></li>
-            <li><a href="#reports">Отчеты</a></li>
-            <li><a href="#charts">Графики</a></li>
-            <li><a href="#warehouse">Склад</a></li>
-        </ul>
-        {% else %}
-        <ul>
-            <li><a href="#production">Задачи</a></li>
-        {% endif %}
-    </div>
-    
-    <div class="row">
-    <div class="container">    
-        <div class="user-info">
-            <p class="company-name">{{ user.factory.name }}</p>
-            <p class="full-name">{{ user.first_name }} {{ user.last_name }}</p>
-            <p class="position">{{ user.role }}</p>
-        </div>
-    </div>
-    {% if user.role == 'director' %}
-                <div class="charts">
-                    <div id="kpi-chart"></div>
-                    <div id="revenue-chart"></div>
-                    <!-- Добавьте код для других графиков по необходимости -->
+    <div class="container-fluid">
+        <div class="row">
+          <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">
+                    <span data-feather="home"></span>
+                    Главная
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span data-feather="file"></span>
+                    Заказы
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span data-feather="shopping-cart"></span>
+                    Товары
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span data-feather="users"></span>
+                    Сотрудники
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span data-feather="bar-chart-2"></span>
+                    Reports
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span data-feather="layers"></span>
+                    Integrations
+                  </a>
+                </li>
+              </ul>
+      
+              <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>Saved reports</span>
+                <a class="link-secondary" href="#" aria-label="Add a new report">
+                  <span data-feather="plus-circle"></span>
+                </a>
+              </h6>
+              <ul class="nav flex-column mb-2">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span data-feather="file-text"></span>
+                    Current month
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span data-feather="file-text"></span>
+                    Last quarter
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span data-feather="file-text"></span>
+                    Social engagement
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span data-feather="file-text"></span>
+                    Year-end sale
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+      
+          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Dashboard</h1>
+              <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group me-2">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Поделиться</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Экспортировать</button>
                 </div>
-
-    {% else %}
-
-        <div class="tasks">
-            <div class="task-column" id="todo-column">
-                <h3>Надо сделать</h3>
-                <p>Пенис</p>
-                <p>Пенис</p>
-                <p>Пенис</p>
+                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                  <span data-feather="calendar"></span>
+                  За неделю
+                </button>
+              </div>
             </div>
-            <div class="task-column" id="in-progress-column">
-                <h3>В работе</h3>
-                <p>Пенис</p>
-                <!-- Например: <p>Задача 3</p>, <p>Задача 4</p>, ... -->
+      
+            <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+      
+            <h2>Section title</h2>
+            <div class="table-responsive">
+              <table class="table table-striped table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Header</th>
+                    <th scope="col">Header</th>
+                    <th scope="col">Header</th>
+                    <th scope="col">Header</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1,001</td>
+                    <td>random</td>
+                    <td>data</td>
+                    <td>placeholder</td>
+                    <td>text</td>
+                  </tr>
+                  <tr>
+                    <td>1,002</td>
+                    <td>placeholder</td>
+                    <td>irrelevant</td>
+                    <td>visual</td>
+                    <td>layout</td>
+                  </tr>
+                  <tr>
+                    <td>1,003</td>
+                    <td>data</td>
+                    <td>rich</td>
+                    <td>dashboard</td>
+                    <td>tabular</td>
+                  </tr>
+                  <tr>
+                    <td>1,003</td>
+                    <td>information</td>
+                    <td>placeholder</td>
+                    <td>illustrative</td>
+                    <td>data</td>
+                  </tr>
+                  <tr>
+                    <td>1,004</td>
+                    <td>text</td>
+                    <td>random</td>
+                    <td>layout</td>
+                    <td>dashboard</td>
+                  </tr>
+                  <tr>
+                    <td>1,005</td>
+                    <td>dashboard</td>
+                    <td>irrelevant</td>
+                    <td>text</td>
+                    <td>placeholder</td>
+                  </tr>
+                  <tr>
+                    <td>1,006</td>
+                    <td>dashboard</td>
+                    <td>illustrative</td>
+                    <td>rich</td>
+                    <td>data</td>
+                  </tr>
+                  <tr>
+                    <td>1,007</td>
+                    <td>placeholder</td>
+                    <td>tabular</td>
+                    <td>information</td>
+                    <td>irrelevant</td>
+                  </tr>
+                  <tr>
+                    <td>1,008</td>
+                    <td>random</td>
+                    <td>data</td>
+                    <td>placeholder</td>
+                    <td>text</td>
+                  </tr>
+                  <tr>
+                    <td>1,009</td>
+                    <td>placeholder</td>
+                    <td>irrelevant</td>
+                    <td>visual</td>
+                    <td>layout</td>
+                  </tr>
+                  <tr>
+                    <td>1,010</td>
+                    <td>data</td>
+                    <td>rich</td>
+                    <td>dashboard</td>
+                    <td>tabular</td>
+                  </tr>
+                  <tr>
+                    <td>1,011</td>
+                    <td>information</td>
+                    <td>placeholder</td>
+                    <td>illustrative</td>
+                    <td>data</td>
+                  </tr>
+                  <tr>
+                    <td>1,012</td>
+                    <td>text</td>
+                    <td>placeholder</td>
+                    <td>layout</td>
+                    <td>dashboard</td>
+                  </tr>
+                  <tr>
+                    <td>1,013</td>
+                    <td>dashboard</td>
+                    <td>irrelevant</td>
+                    <td>text</td>
+                    <td>visual</td>
+                  </tr>
+                  <tr>
+                    <td>1,014</td>
+                    <td>dashboard</td>
+                    <td>illustrative</td>
+                    <td>rich</td>
+                    <td>data</td>
+                  </tr>
+                  <tr>
+                    <td>1,015</td>
+                    <td>random</td>
+                    <td>tabular</td>
+                    <td>information</td>
+                    <td>text</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div class="task-column" id="done-column">
-                <h3>Выполнено</h3>
-                <p> не Пенис</p>
-                <p> не Пенис</p>
-                <p> не Пенис</p>
-                <p> не Пенис</p>
-            </div>
+          </main>
         </div>
-    {% endif %}
-   </div> 
-   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script>
-        var kpiData = {
-            x: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-            y: [10, 15, 7, 12, 18],
-            type: 'bar',
-            name: 'KPI',
-            marker: {
-            color: '#bc1aa9' // Цвет графика KPI
-        },
-        };
-    
-        // Пример данных для графика выручки (замените на ваши реальные данные)
-        var revenueData = {
-            x: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-            y: [2000, 2500, 1800, 2200, 2800],
-            type: 'line',
-            name: 'Revenue',
-            line: {
-            color: '#00ff0d' // Цвет графика выручки
-        },
-        };
-        var layout = {
-        plot_bgcolor: '#000', // Черный фон графика
-        paper_bgcolor: '#000',
-        title: {
-            text: 'KPI', // Заголовок графика KPI
-        font: {
-                color: '#fff' // Белый цвет заголовка
-            }
-        },
-        xaxis: {
-            tickfont: {
-                color: '#eeeeee' // Белый цвет значений по оси X
-            },
-            gridcolor: '#2f2f2f' // Белая сетка по оси X
-        },
-        yaxis: {
-            tickfont: {
-                color: '#eeeeee' // Белый цвет значений по оси X
-            },
-            gridcolor: '#2f2f2f' // Белая сетка по оси Y
-        }
-        };
-        // Генерация графика KPI
-        Plotly.newPlot('kpi-chart', [kpiData],layout);
-        layout.title.text = 'Отгрузки';
-        // Генерация графика выручки
-        Plotly.newPlot('revenue-chart', [revenueData],layout);
-        <!-- Добавьте код для других графиков по необходимости -->
-    </script>
-
+      </div>
+      
+      
+            <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+            <script src="{% static "erp/dashboard.js"%}"></script>
+        </body>
 </main>
 {% endblock %}
 

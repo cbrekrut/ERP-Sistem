@@ -1,31 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Muli:300,400,700');
-.menu {
-    background-color: #2f2f2f; /* Цвет фона меню */
-    padding: 10px; /* Внутренний отступ меню */
-}
-
-.menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.menu li {
-    display: inline;
-    margin-right: 20px; /* Расстояние между пунктами меню */
-}
-
-.menu a {
-    text-decoration: none;
-    color: #e1e1e1; /* Цвет текста меню */
-    font-weight: bold;
-    font-size: 16px;
-    transition: color 0.3s; /* Плавное изменение цвета при наведении */
-}
-
-.menu a:hover {
-    color: #00b3ff; /* Цвет текста меню при наведении */
-}
 
 * {
     margin: 0;
@@ -34,7 +7,7 @@
 
 body {
     padding-top: 5%;
-    background-color: #000000;
+    background-color: #ffffff;
     height: auto;
     font-family: 'Muli', sans-serif;
 }
@@ -100,103 +73,104 @@ opacity: 0;
 max-width: 0;
 }
 
+
 body {
-    margin: 0; /* Убираем отступы по умолчанию */
-    padding: 0; /* Убираем отступы по умолчанию */
-}
-.row {
-    margin-top: 1%;
-    display: flex;
-    flex-wrap: wrap;
-    height: auto
-}
-.container {
-    border-radius: 10%;
-    background: #737373;
-    width: 20%;
-    height: 20rem;
-    margin-left: 10px; /* Регулируем отступ слева по вашему усмотрению */
-    margin-right: 10px; /* Отступ между контейнером и графиками */
-    display: flex; /* Используем флексбокс для размещения элементов внутри контейнера */
-    flex-direction: column; /* Располагаем элементы в столбец */
-    float: left;
+  font-size: .875rem;
 }
 
-.charts {
-    width: 100%;
-    flex-direction: row; /* Ширина блока с графиками, можете настроить по вашему усмотрению */
-    display: flex; /* Используем флексбокс для размещения элементов внутри блока с графиками */
-}
-#kpi-chart,
-#revenue-chart {
-    width: 100%; /* Ширина графиков, можете настроить по вашему усмотрению */
-    height: 60%;
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
 }
 
-h1 {
-    color: #454545;
-    text-align: center;
+/*
+ * Sidebar
+ */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  /* rtl:raw:
+  right: 0;
+  */
+  bottom: 0;
+  /* rtl:remove */
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 48px 0 0; /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 
-.user-info {
-    flex: 1; /* Занимаем доступное пространство в высоту */
-    padding: 10px; /* Добавим немного отступов для внутреннего контента */
+@media (max-width: 767.98px) {
+  .sidebar {
+    top: 5rem;
+  }
 }
 
-.company-name {
-    padding-top: 3%;
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #93d4ff;
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
 
-.position {
-    padding-top: 3%;
-    font-size: 1.1em;
-    color: #555;
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
 }
 
-.full-name {
-    padding-top: 3%;
-    font-size: 1.3em;
-    color: #f2f2f2;
-}
-main {
-    margin-top: 2.4%;
-    background-color: #000000;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #727272;
 }
 
-.tasks {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    flex: 1 1 20%;
+.sidebar .nav-link.active {
+  color: #2470dc;
 }
 
-.task-column {
-    padding: 5%;
-    margin: 3%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
 }
 
-#todo-column {
-    background-color: #ffd700; /* Цвет для столбца "Надо сделать" */
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
 }
 
-#in-progress-column {
+/*
+ * Navbar
+ */
 
-    background-color: #87ceeb; /* Цвет для столбца "В работе" */
+.navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, .25);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
 }
 
-#done-column {
-    background-color: #90ee90; /* Цвет для столбца "Выполнено" */
+.navbar .navbar-toggler {
+  top: .25rem;
+  right: 1rem;
 }
 
-.task-column h3 {
-    text-align: center;
-    margin-bottom: 10px;
-    color:#f2f2f2;
+.navbar .form-control {
+  padding: .75rem 1rem;
+  border-width: 0;
+  border-radius: 0;
+}
+
+.form-control-dark {
+  color: #fff;
+  background-color: rgba(255, 255, 255, .1);
+  border-color: rgba(255, 255, 255, .1);
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
