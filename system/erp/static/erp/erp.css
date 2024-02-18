@@ -106,18 +106,21 @@ body {
 }
 .row {
     margin-top: 1%;
-    display: flex; /* Используем флексбокс для распределения элементов в строку */
-    height: 100%;
+    display: flex;
+    flex-grow: 8; /* Используем флексбокс для распределения элементов в строку */
+    width: 100%;
+    height: auto
 }
 .container {
     border-radius: 10%;
     background: #737373;
     width: 20%;
-    height: 40%;
+    height: 20rem;
     margin-left: 10px; /* Регулируем отступ слева по вашему усмотрению */
     margin-right: 10px; /* Отступ между контейнером и графиками */
     display: flex; /* Используем флексбокс для размещения элементов внутри контейнера */
     flex-direction: column; /* Располагаем элементы в столбец */
+    float: left;
 }
 
 .charts {
@@ -164,4 +167,37 @@ main {
     margin-top: 2.4%;
     background-color: #000000;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.tasks {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.task-column {
+    flex: 1 1 100%;
+    padding: 5%;
+    margin: 3%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+#todo-column {
+    background-color: #ffd700; /* Цвет для столбца "Надо сделать" */
+}
+
+#in-progress-column {
+
+    background-color: #87ceeb; /* Цвет для столбца "В работе" */
+}
+
+#done-column {
+    background-color: #90ee90; /* Цвет для столбца "Выполнено" */
+}
+
+.task-column h3 {
+    text-align: center;
+    margin-bottom: 10px;
+    color:#f2f2f2;
 }

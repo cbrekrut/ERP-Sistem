@@ -11,6 +11,7 @@ def erp(request):
     user = request.user  # Получаем текущего пользователя
     return render(request, 'erp/erp.html', {'user': user})
 
+
 def signup(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)

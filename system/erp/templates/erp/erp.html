@@ -6,12 +6,17 @@
 {% block content %}
 <main>
     <div class="menu">
+        {% if user.role == 'director' %}
         <ul>
             <li><a href="#production">Производство</a></li>
             <li><a href="#reports">Отчеты</a></li>
             <li><a href="#charts">Графики</a></li>
             <li><a href="#warehouse">Склад</a></li>
         </ul>
+        {% else %}
+        <ul>
+            <li><a href="#production">Задачи</a></li>
+        {% endif %}
     </div>
     
     <div class="row">
@@ -22,12 +27,35 @@
             <p class="position">{{ user.role }}</p>
         </div>
     </div>
-    <div class="charts">
-        <div id="kpi-chart"></div>
-        <div id="revenue-chart"></div>
-</div>
-</div>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    {% if user.role == 'director' %}
+                <div class="charts">
+                    <div id="kpi-chart"></div>
+                    <div id="revenue-chart"></div>
+                    <!-- Добавьте код для других графиков по необходимости -->
+                </div>
+
+    {% else %}
+
+        <div class="tasks">
+            <div class="task-column" id="todo-column">
+                <h3>Надо сделать</h3>
+                <!-- Вставьте код для отображения задач в статусе "Надо сделать" -->
+                <!-- Например: <p>Задача 1</p>, <p>Задача 2</p>, ... -->
+            </div>
+            <div class="task-column" id="in-progress-column">
+                <h3>В работе</h3>
+                <!-- Вставьте код для отображения задач в статусе "В работе" -->
+                <!-- Например: <p>Задача 3</p>, <p>Задача 4</p>, ... -->
+            </div>
+            <div class="task-column" id="done-column">
+                <h3>Выполнено</h3>
+                <!-- Вставьте код для отображения задач в статусе "Выполнено" -->
+                <!-- Например: <p>Задача 5</p>, <p>Задача 6</p>, ... -->
+            </div>
+        </div>
+    {% endif %}
+   </div> 
+   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script>
         var kpiData = {
             x: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
