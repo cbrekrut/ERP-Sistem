@@ -52,7 +52,7 @@
             <div class="position-sticky pt-3">
               <ul class="nav flex-column">
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="% url 'erp' %}">
+                  <a class="nav-link" aria-current="page" href="{% url 'erp' %}">
                     <span data-feather="home"></span>
                     Главная
                   </a>
@@ -150,58 +150,23 @@
                       {% if subordinate.role == 'director' %}
                           <button class="btn btn-success">Пригласить</button>
                       {% else %}
-                          <button class="btn btn-light" onclick="toggleTaskForm('{{ forloop.counter }}', '{{ subordinate.get_full_name }}')">Дать Задачу</button>
-                          <div id="taskFormOverlay_{{ forloop.counter }}" class="overlay" style="display: none;">
-                              <div id="taskForm_{{ forloop.counter }}" class="centered-form">
-                                  <!-- Форма для выдачи задачи -->
-                                  <!-- Добавьте соответствующие поля и кнопку сохранения задачи -->
-                                  <form id="taskFormInner_{{ forloop.counter }}">
-                                      {% csrf_token %}
-                                      <input type="text" name="task_description" placeholder="Описание задачи">
-                                      <button type="button" class="btn btn-primary" onclick="saveTask('{{ subordinate.get_full_name }}', '{{ forloop.counter }}')">Сохранить</button>
-                                  </form>
-                              </div>
-                          </div>
-                      {% endif %}
+                         <button class="btn btn-light" onclick="toggleTaskForm('{{ forloop.counter }}', '{{ subordinate.get_full_name }}')">Дать Задачу</button>
+                         <div id="taskFormOverlay_{{ forloop.counter }}" class="overlay" style="display: none;">
+                         <div id="taskForm_{{ forloop.counter }}" class="centered-form">
+                        <!-- Форма для выдачи задачи -->
+                        <!-- Добавьте соответствующие поля и кнопку сохранения задачи -->
+                        <form id="taskFormInner_{{ forloop.counter }}">
+                            {% csrf_token %}
+                            <input type="text" name="task_description" placeholder="Описание задачи">
+                            <button type="button" class="btn btn-primary" onclick="saveTask('{{ subordinate.get_full_name }}', '{{ forloop.counter }}')" data-user-id="{{ user.id }}">Сохранить</button>
+                        </form>
+                    </div>
+                </div>
+            {% endif %}
                   </td>
               </tr>
           {% endfor %}
-<script>
-    function toggleTaskForm(counter) {
-        var overlayId = "taskFormOverlay_" + counter;
-        var overlay = document.getElementById(overlayId);
-        overlay.style.display = (overlay.style.display === "none") ? "flex" : "none";
-    } 
 
-    function saveTask(subordinateName) {
-        var formId = "taskFormInner_" + subordinateName.replace(/\s+/g, '_');
-        var form = document.getElementById(formId);
-
-        var formData = new FormData(form);
-        formData.append('user_id', '{{ user.id }}');  // Добавляем идентификатор пользователя
-
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/save_task/{{ user.id }}/', true);
-
-        // Устанавливаем заголовок X-Requested-With
-        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    // Закрываем форму после успешного сохранения задачи
-                    toggleTaskForm(subordinateName.replace(/\s+/g, '_'));
-                    alert("Задача успешно сохранена для: " + subordinateName);
-                } else {
-                    alert("Произошла ошибка при сохранении задачи");
-                }
-            }
-        };
-
-        xhr.send(formData);
-}
-
-</script>
           </tbody>
         </table>
         </div>
@@ -214,6 +179,7 @@
             <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
             <script src="{% static "erp/js/dashboard.js"%}"></script>
+            <script src="{% static "erp/js/load_task.js"%}"></script>
         </body>
 </main>
 {% endblock %}
