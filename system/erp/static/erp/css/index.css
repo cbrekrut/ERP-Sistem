@@ -15,10 +15,14 @@ header {
     background-color: #222;
     color: #fff;
     padding: 10px 0;
-    position: fixed; /* Закрепляем шапку на верхней части страницы */
-    top: 0; /* Располагаем шапку вверху страницы */
-    width: 100%; /* Делаем ширину шапки равной ширине экрана */
-    z-index: 999; /* Устанавливаем z-index, чтобы шапка была выше других элементов */
+    position: fixed;
+    /* Закрепляем шапку на верхней части страницы */
+    top: 0;
+    /* Располагаем шапку вверху страницы */
+    width: 100%;
+    /* Делаем ширину шапки равной ширине экрана */
+    z-index: 999;
+    /* Устанавливаем z-index, чтобы шапка была выше других элементов */
 }
 
 .header-col {
@@ -36,13 +40,15 @@ nav a {
     font-weight: bold;
     transition: color 0.3s;
 }
-nav a:hover{
+
+nav a:hover {
     color: #00b3ff;
 }
+
 main {
     max-width: 85%;
     margin: 2% auto;
-    padding: 10px;
+    padding: 30px;
     background-color: #000000;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -143,7 +149,7 @@ p {
 .text li {
     cursor: pointer;
     display: inline-block;
-    float:left;
+    float: left;
     font-weight: 700;
     font-size: 1em;
     color: #fff;
@@ -151,14 +157,16 @@ p {
     transition: all 1.0s ease-in-out;
     max-width: 2em;
 }
+
 .text.hidden li.spaced {
-padding-left: 0;
+    padding-left: 0;
 }
+
 .text li.spaced {
-padding-left: 0.5em;
+    padding-left: 0.5em;
 }
 
 .text.hidden li.ghost {
-opacity: 0;
-max-width: 0;
+    opacity: 0;
+    max-width: 0;
 }

@@ -18,9 +18,9 @@
 <script src="{% static "erp/js/nes_ani.js"%}"></script>
 {% if user.is_authenticated %}
     <header class="navbar navbar-dark sticky-top bg-dark p-0 shadow">
-        <a class="navbar-brand col-12 col-lg-8 me-0 px-3 d-flex" href="{% url 'index' %}">
+        <a class="navbar-brand col-12 col-lg-5 me-0 px-3 d-flex" href="{% url 'index' %}">
             <ul class="text hidden">
-                <li class="spaced">Н</li>
+                <li>Н</li>
                 <li class="ghost">е</li>
                 <li class="ghost">й</li>
                 <li class="ghost">р</li>
@@ -67,10 +67,10 @@
     <header>
         <div class="container">
             <div class="row justify-content-space-between d-flex">
-                <div class="col-sm-12 col-lg-3 d-flex justify-content-center mb-4 mb-lg-0">
+                <div class="col-sm-12 col-lg-5 d-flex justify-content-center mb-4 mb-lg-0">
                     <a href="{% url 'index' %}">
                     <ul class="text hidden">
-                        <li class="spaced">Н</li>
+                        <li>Н</li>
                         <li class="ghost">е</li>
                         <li class="ghost">й</li>
                         <li class="ghost">р</li>
@@ -105,7 +105,7 @@
                         <li class="ghost">ы</li>
                     </ul></a>
                 </div>
-                <div class="col-sm-12 col-lg-9 d-flex justify-content-center">
+                <div class="col-sm-12 col-lg-7 d-flex justify-content-center">
                     <nav>
                         <a href="{% url 'signup' %}">Зарегистрироваться</a>
                         <a href="{% url 'login' %}">Войти</a>
@@ -115,10 +115,28 @@
         </div>
     </header>
  {% endif %}
-
- {% block content %}{% endblock %}
+ 
+{% block content %}{% endblock %}
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
     <script src="{% static "erp/js/dashboard.js"%}"></script>
 </body>
 </html>
+{% comment %} 
+⣿⣿⣿⣿⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣵⣿⣿⣿⠿⡟⣛⣧⣿⣯⣿⣝⡻⢿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⠋⠁⣴⣶⣿⣿⣿⣿⣿⣿⣿⣦⣍⢿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⢷⠄⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣏⢼⣿⣿⣿⣿
+⢹⣿⣿⢻⠎⠔⣛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⣿⣿⣿⣿
+⢸⣿⣿⠇⡶⠄⣿⣿⠿⠟⡛⠛⠻⣿⡿⠿⠿⣿⣗⢣⣿⣿⣿⣿
+⠐⣿⣿⡿⣷⣾⣿⣿⣿⣾⣶⣶⣶⣿⣁⣔⣤⣀⣼⢲⣿⣿⣿⣿
+⠄⣿⣿⣿⣿⣾⣟⣿⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⢟⣾⣿⣿⣿⣿
+⠄⣟⣿⣿⣿⡷⣿⣿⣿⣿⣿⣮⣽⠛⢻⣽⣿⡇⣾⣿⣿⣿⣿⣿
+⠄⢻⣿⣿⣿⡷⠻⢻⡻⣯⣝⢿⣟⣛⣛⣛⠝⢻⣿⣿⣿⣿⣿⣿
+⠄⠸⣿⣿⡟⣹⣦⠄⠋⠻⢿⣶⣶⣶⡾⠃⡂⢾⣿⣿⣿⣿⣿⣿
+⠄⠄⠟⠋⠄⢻⣿⣧⣲⡀⡀⠄⠉⠱⣠⣾⡇⠄⠉⠛⢿⣿⣿⣿
+⠄⠄⠄⠄⠄⠈⣿⣿⣿⣷⣿⣿⢾⣾⣿⣿⣇⠄⠄⠄⠄⠄⠉⠉
+⠄⠄⠄⠄⠄⠄⠸⣿⣿⠟⠃⠄⠄⢈⣻⣿⣿⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⢿⣿⣾⣷⡄⠄⢾⣿⣿⣿⡄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠸⣿⣿⣿⠃⠄⠈⢿⣿⣿⠄⠄⠄⠄⠄⠄⠄
+ {% endcomment %}
