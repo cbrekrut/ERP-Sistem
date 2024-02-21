@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+from django.views.decorators.http import require_POST
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from .forms import CustomUserCreationForm, CustomAuthenticationForm
@@ -17,9 +18,10 @@ def customers(request):
 @csrf_exempt
 def save_task(request, user_id):
     if request.method == 'POST' or request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-        print('OK')
+        print(request.POST)
         user = get_object_or_404(CustomUser, pk=user_id)
-        print(user)
+        email = request.POST.get('sub_email')
+        print(email)
         task_description = request.POST.get('task_description')
         print(task_description)
 
@@ -54,6 +56,25 @@ def signup(request):
     else:
         form = CustomUserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
+
+
+@csrf_exempt
+@require_POST
+def change_task_status(request):
+    task_id = request.POST.get('task_id')
+    new_status = request.POST.get('new_status')
+
+    task = get_object_or_404(Task, id=task_id)
+    task.status = new_status
+    task.save()
+
+    return JsonResponse({'status': 'success'})
+
+
+
+
+
+
 
 def login_view(request):
     if request.method == 'POST':

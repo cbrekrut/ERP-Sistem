@@ -35,7 +35,7 @@
                     {% if task.status == 'waits'%}
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             {{task.description}}
-                            <button class="btn btn-primary btn-sm">Взять в работу</button>
+                            <button class="btn btn-primary btn-sm" onclick="takeTask('{{ task.id }}')">Взять в работу</button>
                         </li>
                     {% endif %}
                     {% endfor %}
@@ -56,7 +56,7 @@
                     <ul class="list-group">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             {{task.description}}
-                            <button class="btn btn-success btn-sm">Выполнено</button>
+                            <button class="btn btn-success btn-sm" onclick="completeTask('{{ task.id }}')">Выполнено</button>
                         </li>
                     {% endif %}
                     {% endfor %}
@@ -88,9 +88,9 @@
 </div>
 
 <!-- Подключение Bootstrap JS и Popper.js (необходимо для некоторых компонентов Bootstrap) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+<script src= "{% static "erp/js/task_status.js"%}"></script>
 </body>
 </html>

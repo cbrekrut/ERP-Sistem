@@ -150,7 +150,7 @@
                       {% if subordinate.role == 'director' %}
                           <button class="btn btn-success">Пригласить</button>
                       {% else %}
-                         <button class="btn btn-light" onclick="toggleTaskForm('{{ forloop.counter }}', '{{ subordinate.get_full_name }}')">Дать Задачу</button>
+                         <button class="btn btn-light" onclick="toggleTaskForm('{{ forloop.counter }}', '{{ subordinate.email }}')">Дать Задачу</button>
                          <div id="taskFormOverlay_{{ forloop.counter }}" class="overlay" style="display: none;">
                          <div id="taskForm_{{ forloop.counter }}" class="centered-form">
                         <!-- Форма для выдачи задачи -->
@@ -158,7 +158,7 @@
                         <form id="taskFormInner_{{ forloop.counter }}">
                             {% csrf_token %}
                             <input type="text" name="task_description" placeholder="Описание задачи">
-                            <button type="button" class="btn btn-primary" onclick="saveTask('{{ subordinate.get_full_name }}', '{{ forloop.counter }}')" data-user-id="{{ subordinate.id }}">Сохранить</button>
+                            <button type="button" class="btn btn-primary" onclick="saveTask('{{ subordinate.email }}', '{{ forloop.counter }}', '{{ subordinate.email }}')" data-user-id="{{ subordinate.id }}">Сохранить</button>
                         </form>
                     </div>
                 </div>
