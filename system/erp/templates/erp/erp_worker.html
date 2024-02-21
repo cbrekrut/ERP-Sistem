@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Пора работать!</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <!-- Карточка пользователя -->
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{user.get_full_name }}</h5>
+            <p class="card-text">Организация: {{user.factory}}</p>
+            <p class="card-text">Должность: {{user.role}}</p>
+        </div>
+    </div>
+
+    <!-- Три блока с задачами -->
+    <div class="row mt-4">
+        <!-- Задачи на сегодня -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    Задачи на сегодня
+                </div>
+                <div class="card-body">
+                    <!-- Список задач -->
+                    <ul class="list-group">
+                    {% for task in tasks %}
+                    {% if task.status == 'waits'%}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{task.description}}
+                            <button class="btn btn-primary btn-sm">Взять в работу</button>
+                        </li>
+                    {% endif %}
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Задачи в работе -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-warning">
+                    Задачи в работе
+                </div>
+                <div class="card-body">
+                    {% for task in tasks %}
+                    {% if task.status == 'runs'%}
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{task.description}}
+                            <button class="btn btn-success btn-sm">Выполнено</button>
+                        </li>
+                    {% endif %}
+                    {% endfor %}
+                        <!-- Добавьте другие задачи по аналогии -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Выполненные работы -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Выполненные работы
+                </div>
+                <div class="card-body">
+                    <!-- Список выполненных работ -->
+                    <ul class="list-group">
+                          {% for task in tasks %}
+                            {% if task.status == 'done'%}
+                                <li class="list-group-item">{{task.description}}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Подключение Bootstrap JS и Popper.js (необходимо для некоторых компонентов Bootstrap) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

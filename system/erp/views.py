@@ -6,7 +6,7 @@ from django.contrib.auth import login, logout, authenticate
 from .forms import CustomUserCreationForm, CustomAuthenticationForm
 from django.views.decorators.csrf import csrf_exempt
 from .models import CustomUser,Task
-
+from datetime import datetime
 def index(request):
     return render(request,'erp/index.html',{})
 
@@ -19,8 +19,10 @@ def save_task(request, user_id):
     if request.method == 'POST' or request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         print('OK')
         user = get_object_or_404(CustomUser, pk=user_id)
+        print(user)
         task_description = request.POST.get('task_description')
         print(task_description)
+
         if task_description:
             task = Task.objects.create(description=task_description, assigned_to=user)
             return JsonResponse({'status': 'success'})
@@ -32,7 +34,11 @@ def save_task(request, user_id):
 
 def erp(request):
     user = request.user  # Получаем текущего пользователя
-    return render(request, 'erp/erp.html', {'user': user})
+    if user.role =='worker':
+        tasks = Task.objects.filter(assigned_to=user,created_at__date=datetime.now().date())
+        return render(request, 'erp/erp_worker.html', {'user': user, 'tasks':tasks})
+    else:
+        return render(request, 'erp/erp.html', {'user': user})
 
 
 def signup(request):

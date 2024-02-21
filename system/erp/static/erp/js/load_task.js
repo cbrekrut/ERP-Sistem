@@ -13,7 +13,7 @@ function saveTask(subordinateName, counter) {
     // Получаем user_id из атрибута данных
     var userId = document.querySelector("[data-user-id]").getAttribute("data-user-id");
     
-    formData.append('user_id', userId);  // Добавляем идентификатор пользователя
+    formData.append('user_id', userId); 
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/save_task/' + userId + '/', true);

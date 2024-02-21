@@ -158,7 +158,7 @@
                         <form id="taskFormInner_{{ forloop.counter }}">
                             {% csrf_token %}
                             <input type="text" name="task_description" placeholder="Описание задачи">
-                            <button type="button" class="btn btn-primary" onclick="saveTask('{{ subordinate.get_full_name }}', '{{ forloop.counter }}')" data-user-id="{{ user.id }}">Сохранить</button>
+                            <button type="button" class="btn btn-primary" onclick="saveTask('{{ subordinate.get_full_name }}', '{{ forloop.counter }}')" data-user-id="{{ subordinate.id }}">Сохранить</button>
                         </form>
                     </div>
                 </div>
