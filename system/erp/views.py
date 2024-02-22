@@ -19,12 +19,10 @@ def customers(request):
 def save_task(request, user_id):
     if request.method == 'POST' or request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         print(request.POST)
-        user = get_object_or_404(CustomUser, pk=user_id)
-        email = request.POST.get('sub_email')
-        print(email)
+        email = request.POST.get('email')
+        user = CustomUser.objects.get(email=email)
         task_description = request.POST.get('task_description')
         print(task_description)
-
         if task_description:
             task = Task.objects.create(description=task_description, assigned_to=user)
             return JsonResponse({'status': 'success'})
