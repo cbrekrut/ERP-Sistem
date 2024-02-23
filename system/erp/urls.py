@@ -9,5 +9,7 @@ urlpatterns = [
     path('change_task_status/', views.change_task_status, name='change_task_status'),    
     path('signup/', views.signup, name='signup'),
     path('login/', views.login_view, name='login'),
-    path('logout/', views.logout_view, name='logout'),    
+    path('logout/', views.logout_view, name='logout'),
+    path('profile/', views.profile, name='profile'),
+    path('subordinate_profile/<str:email>/', views.director_erp, name='subordinate_profile'),
 ]

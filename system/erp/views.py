@@ -9,12 +9,17 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import CustomUser,Task
 from datetime import datetime
 from django.contrib import messages
+
 def index(request):
     return render(request,'erp/index.html',{})
 
 def customers(request):
     user = request.user
     return render(request,'erp/erpCustomers.html',{'user': user})
+
+def profile(request):
+    user = request.user
+    return render(request,'erp/erp_director.html',{'user': user})
 
 @csrf_exempt
 def save_task(request, user_id):
@@ -39,7 +44,13 @@ def erp(request):
         tasks = Task.objects.filter(assigned_to=user,created_at__date=datetime.now().date())
         return render(request, 'erp/erp_worker.html', {'user': user, 'tasks':tasks})
     else:
-        return render(request, 'erp/erp.html', {'user': user})
+        return render(request, 'erp/erp_analytics.html', {'user': user})
+    
+def director_erp(request, email):
+    now_user = request.user
+    user = CustomUser.objects.get(email=email)
+    tasks = Task.objects.filter(assigned_to=user, created_at__date=datetime.now().date())
+    return render(request, 'erp/erp_worker.html', {'user': user, 'tasks': tasks, 'now_user': now_user})
 
 
 def signup(request):

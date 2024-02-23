@@ -43,7 +43,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Задачи в работе -->
         <div class="col-md-4">
             <div class="card">
@@ -85,6 +84,13 @@
             </div>
         </div>
     </div>
+    {% if now_user.role == 'director' %}
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary btn-lg mt-4" onclick="window.location.href='/profile/'">Вернуться</button>
+            </div>
+        </div>
+    {% endif %}
 </div>
 
 <!-- Подключение Bootstrap JS и Popper.js (необходимо для некоторых компонентов Bootstrap) -->

@@ -23,12 +23,12 @@
           <i class="lni lni-grid-alt"></i>
         </button>
         <div class="sidebar-logo">
-          <a href="#">НЭС</a>
+          <a href="{% url 'erp'%}">НЭС</a>
         </div>
       </div>
       <ul class="sidebar-nav">
         <li class="sibebar-item">
-          <a href="#" class="sidebar-link">
+          <a href="{% url 'profile'%}" class="sidebar-link">
             <i class="lni lni-user"></i>
             <span>Профиль</span>
           </a>
@@ -48,7 +48,7 @@
         <li class="sibebar-item">
           <a href="{% url 'customers'%}" class="sidebar-link">
             <i class="lni lni-clipboard"></i>
-            <span>Задачи</span>
+            <span>Сотрудники</span>
           </a>
         </li>
       </ul>

@@ -1,0 +1,22 @@
+{% extends 'erp/erp.html' %}
+{% block content %}
+<div class="container mt-5">
+    <!-- Карточка пользователя -->
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{user.get_full_name }}</h5>
+            <p class="card-text">Организация: {{user.factory}}</p>
+            <p class="card-text">Должность: {{user.role}}</p>
+        </div>
+    </div>
+    {% for subordinate in user.subordinates.all %}
+    <div class="card">
+        <div class="card-body">
+            <a href="{% url 'subordinate_profile' email=subordinate.email %}">
+                <h5 class="card-title">{{ subordinate.get_full_name }}</h5>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
