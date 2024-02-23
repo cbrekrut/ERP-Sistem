@@ -43,22 +43,28 @@
 </nav>
 <h2 class="text-center text-white">Регистрация</h2>
 <form method="post" action="{% url 'signup' %}">
-    {% csrf_token %}
-    {{ form.email.label_tag }}
-    {{ form.email }}
-    
-    {{ form.first_name.label_tag }}
-    {{ form.first_name }}
-    
-    {{ form.last_name.label_tag }}
-    {{ form.last_name }}
-    
-    {{ form.password1.label_tag }}
-    {{ form.password1 }}
-    
-    {{ form.password2.label_tag }}
-    {{ form.password2 }}
-    
-    <button type="submit">Зарегистрироваться</button>
+  {% csrf_token %}
+  
+  {{ form.email.label_tag }}
+  {{ form.email }}
+  {{ form.email.errors }} <!-- Вывод ошибок для поля email -->
+
+  {{ form.first_name.label_tag }}
+  {{ form.first_name }}
+  {{ form.first_name.errors }} <!-- Вывод ошибок для поля first_name -->
+
+  {{ form.last_name.label_tag }}
+  {{ form.last_name }}
+  {{ form.last_name.errors }} <!-- Вывод ошибок для поля last_name -->
+
+  {{ form.password1.label_tag }}
+  {{ form.password1 }}
+  {{ form.password1.errors }} <!-- Вывод ошибок для поля password1 -->
+
+  {{ form.password2.label_tag }}
+  {{ form.password2 }}
+  {{ form.password2.errors }} <!-- Вывод ошибок для поля password2 -->
+
+  <button type="submit">Зарегистрироваться</button>
 </form>
 {% endblock %}

@@ -8,6 +8,7 @@ from .forms import CustomUserCreationForm, CustomAuthenticationForm
 from django.views.decorators.csrf import csrf_exempt
 from .models import CustomUser,Task
 from datetime import datetime
+from django.contrib import messages
 def index(request):
     return render(request,'erp/index.html',{})
 
@@ -51,6 +52,8 @@ def signup(request):
             user = authenticate(request, email=email, password=password)
             login(request, user)
             return redirect('index')
+        else:
+            messages.error(request, 'Пожалуйста, исправьте ошибки в форме.')
     else:
         form = CustomUserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
@@ -67,12 +70,6 @@ def change_task_status(request):
     task.save()
 
     return JsonResponse({'status': 'success'})
-
-
-
-
-
-
 
 def login_view(request):
     if request.method == 'POST':
