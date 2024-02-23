@@ -1,142 +1,17 @@
-<!-- templates/base.html -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <link rel="stylesheet" href="{% static 'erp/css/nes_ani.css' %}">
-    <link rel="stylesheet" href="https://cdn.plot.ly/plotly-latest.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
-    <title>{% block title %}{% endblock %}</title>
-    {% block link %}{% endblock %}
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'erp/css/base.css' %}">
+  {% block link %}{% endblock %}
+  <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-<script src="{% static "erp/js/nes_ani.js"%}"></script>
-{% if user.is_authenticated %}
-    <header class="navbar navbar-dark sticky-top bg-dark p-0 shadow">
-        <a class="navbar-brand col-12 col-lg-5 me-0 px-3 d-flex" href="{% url 'index' %}">
-            <ul class="text hidden">
-                <li>Н</li>
-                <li class="ghost">е</li>
-                <li class="ghost">й</li>
-                <li class="ghost">р</li>
-                <li class="ghost">о</li>
-                <li class="ghost">с</li>
-                <li class="ghost">е</li>
-                <li class="ghost">т</li>
-                <li class="ghost">е</li>
-                <li class="ghost">в</li>
-                <li class="ghost">ы</li>
-                <li class="ghost">е</li>
-                
-                <li class="spaced">Э</li>
-                <li class="ghost">л</li>
-                <li class="ghost">е</li>
-                <li class="ghost">к</li>
-                <li class="ghost">т</li>
-                <li class="ghost">р</li>
-                <li class="ghost">о</li>
-                <li class="ghost">н</li>
-                <li class="ghost">н</li>
-                <li class="ghost">ы</li>
-                <li class="ghost">е</li>
-                
-                <li class="spaced">С</li>
-                <li class="ghost">и</li>
-                <li class="ghost">с</li>
-                <li class="ghost">т</li>
-                <li class="ghost">е</li>
-                <li class="ghost">м</li>
-                <li class="ghost">ы</li>
-            </ul>
-        </a>
-        <div class="col-12 col-lg-4 justify-content-center d-flex">
-            <div class="navbar-nav">
-                <a class="nav-link px-3" href="{% url 'logout' %}">Выйти</a>
-            </div>
-            <div class="navbar-nav">
-                <a class="nav-link px-3" href="{% url 'erp' %}">ERP</a>
-            </div>
-        </div>
-    </header>
-{% else %}
-    <header>
-        <div class="container">
-            <div class="row justify-content-space-between d-flex">
-                <div class="col-sm-12 col-lg-5 d-flex justify-content-center mb-4 mb-lg-0">
-                    <a href="{% url 'index' %}">
-                    <ul class="text hidden">
-                        <li>Н</li>
-                        <li class="ghost">е</li>
-                        <li class="ghost">й</li>
-                        <li class="ghost">р</li>
-                        <li class="ghost">о</li>
-                        <li class="ghost">с</li>
-                        <li class="ghost">е</li>
-                        <li class="ghost">т</li>
-                        <li class="ghost">е</li>
-                        <li class="ghost">в</li>
-                        <li class="ghost">ы</li>
-                        <li class="ghost">е</li>
-                        
-                        <li class="spaced">Э</li>
-                        <li class="ghost">л</li>
-                        <li class="ghost">е</li>
-                        <li class="ghost">к</li>
-                        <li class="ghost">т</li>
-                        <li class="ghost">р</li>
-                        <li class="ghost">о</li>
-                        <li class="ghost">н</li>
-                        <li class="ghost">н</li>
-                        <li class="ghost">ы</li>
-                        <li class="ghost">е</li>
-                        
-                        
-                        <li class="spaced">С</li>
-                        <li class="ghost">и</li>
-                        <li class="ghost">с</li>
-                        <li class="ghost">т</li>
-                        <li class="ghost">е</li>
-                        <li class="ghost">м</li>
-                        <li class="ghost">ы</li>
-                    </ul></a>
-                </div>
-                <div class="col-sm-12 col-lg-7 d-flex justify-content-center">
-                    <nav>
-                        <a href="{% url 'signup' %}">Зарегистрироваться</a>
-                        <a href="{% url 'login' %}">Войти</a>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
- {% endif %}
- 
 {% block content %}{% endblock %}
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
-    <script src="{% static "erp/js/dashboard.js"%}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
-{% comment %} 
-⣿⣿⣿⣿⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣵⣿⣿⣿⠿⡟⣛⣧⣿⣯⣿⣝⡻⢿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⠋⠁⣴⣶⣿⣿⣿⣿⣿⣿⣿⣦⣍⢿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⢷⠄⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣏⢼⣿⣿⣿⣿
-⢹⣿⣿⢻⠎⠔⣛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⣿⣿⣿⣿
-⢸⣿⣿⠇⡶⠄⣿⣿⠿⠟⡛⠛⠻⣿⡿⠿⠿⣿⣗⢣⣿⣿⣿⣿
-⠐⣿⣿⡿⣷⣾⣿⣿⣿⣾⣶⣶⣶⣿⣁⣔⣤⣀⣼⢲⣿⣿⣿⣿
-⠄⣿⣿⣿⣿⣾⣟⣿⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⢟⣾⣿⣿⣿⣿
-⠄⣟⣿⣿⣿⡷⣿⣿⣿⣿⣿⣮⣽⠛⢻⣽⣿⡇⣾⣿⣿⣿⣿⣿
-⠄⢻⣿⣿⣿⡷⠻⢻⡻⣯⣝⢿⣟⣛⣛⣛⠝⢻⣿⣿⣿⣿⣿⣿
-⠄⠸⣿⣿⡟⣹⣦⠄⠋⠻⢿⣶⣶⣶⡾⠃⡂⢾⣿⣿⣿⣿⣿⣿
-⠄⠄⠟⠋⠄⢻⣿⣧⣲⡀⡀⠄⠉⠱⣠⣾⡇⠄⠉⠛⢿⣿⣿⣿
-⠄⠄⠄⠄⠄⠈⣿⣿⣿⣷⣿⣿⢾⣾⣿⣿⣇⠄⠄⠄⠄⠄⠉⠉
-⠄⠄⠄⠄⠄⠄⠸⣿⣿⠟⠃⠄⠄⢈⣻⣿⣿⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⢿⣿⣾⣷⡄⠄⢾⣿⣿⣿⡄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⠸⣿⣿⣿⠃⠄⠈⢿⣿⣿⠄⠄⠄⠄⠄⠄⠄
- {% endcomment %}

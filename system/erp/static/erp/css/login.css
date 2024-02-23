@@ -98,7 +98,7 @@ input[type="password"] {
 button {
     background-color: #4caf50;
     color: white;
-    padding: 10px 15px;
+    padding: 15px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -111,4 +111,32 @@ button:hover {
 .error-message {
     color: #ff0000;  /* Цвет текста ошибки */
     margin-top: 5px; /* Дополнительный отступ сверху для сообщения об ошибке */
+}
+
+.login-btn{
+    padding-right: 10px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.55);
+    transition: 0.1s ease-in-out;
+}
+
+.login-btn:hover{
+    color: rgba(255, 255, 255, 0.75)
+}
+
+.navbar-toggler{
+    border: none;
+}
+
+.navbar-toggler:focus{
+    box-shadow: none;
+    outline: none;
+}
+
+.offcanvas-body{
+    background-color: rgba(0, 0, 0, 0.99);
+}
+
+.offcanvas-header{
+    background-color: rgba(78, 93, 130, 0.674);
 }
