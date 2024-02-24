@@ -78,6 +78,7 @@ def change_task_status(request):
 
     task = get_object_or_404(Task, id=task_id)
     task.status = new_status
+    task.created_at = datetime.now()
     task.save()
 
     return JsonResponse({'status': 'success'})

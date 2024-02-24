@@ -34,7 +34,8 @@
                     {% for task in tasks %}
                     {% if task.status == 'waits'%}
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{task.description}}
+                            Описание задачи:<br> {{task.description}}<br><br>
+                            Выдана:<br> {{ task.created_at|date:"d F Y, H:i" }}<br>
                             <button class="btn btn-primary btn-sm" onclick="takeTask('{{ task.id }}')">Взять в работу</button>
                         </li>
                     {% endif %}
@@ -54,7 +55,8 @@
                     {% if task.status == 'runs'%}
                     <ul class="list-group">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{task.description}}
+                            Описание задачи:<br> {{task.description}}<br><br>
+                            Взята в работу:<br> {{ task.created_at|date:"d F Y, H:i" }}<br>
                             <button class="btn btn-success btn-sm" onclick="completeTask('{{ task.id }}')">Выполнено</button>
                         </li>
                     {% endif %}
@@ -76,7 +78,8 @@
                     <ul class="list-group">
                           {% for task in tasks %}
                             {% if task.status == 'done'%}
-                                <li class="list-group-item">{{task.description}}</li>
+                                <li class="list-group-item">Описание задачи: {{task.description}}</li>
+                                <li class="list-group-item">Выполнена: {{ task.created_at|date:"d F Y, H:i" }}</li><br>
                             {% endif %}
                         {% endfor %}
                     </ul>
