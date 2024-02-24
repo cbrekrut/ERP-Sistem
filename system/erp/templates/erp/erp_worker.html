@@ -36,7 +36,9 @@
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Описание задачи:<br> {{task.description}}<br><br>
                             Выдана:<br> {{ task.created_at|date:"d F Y, H:i" }}<br>
-                            <button class="btn btn-primary btn-sm" onclick="takeTask('{{ task.id }}')">Взять в работу</button>
+                            {% if now_user.role != 'director' %}
+                                <button class="btn btn-primary btn-sm" onclick="takeTask('{{ task.id }}')">Взять в работу</button>
+                            {% endif %}
                         </li>
                     {% endif %}
                     {% endfor %}
@@ -57,7 +59,9 @@
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Описание задачи:<br> {{task.description}}<br><br>
                             Взята в работу:<br> {{ task.created_at|date:"d F Y, H:i" }}<br>
-                            <button class="btn btn-success btn-sm" onclick="completeTask('{{ task.id }}')">Выполнено</button>
+                            {% if now_user.role != 'director' %}
+                                <button class="btn btn-success btn-sm" onclick="completeTask('{{ task.id }}')">Выполнено</button>
+                            {% endif %}
                         </li>
                     {% endif %}
                     {% endfor %}
