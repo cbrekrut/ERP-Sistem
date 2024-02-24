@@ -22,6 +22,12 @@
   }
 </style>
 <style>
+a{
+  color:white;
+}
+a:hover{
+  color:grey;
+}
 .overlay {
     position: fixed;
     top: 0;
@@ -67,7 +73,7 @@
               {% for subordinate in user.subordinates.all %}
                   <tr>
                       <th scope="row">{{ forloop.counter }}</th>
-                      <td>{{ subordinate.get_full_name }}</td>
+                      <td><a href="{% url 'subordinate_profile' email=subordinate.email %}">{{ subordinate.get_full_name }}</a></td>
                       <td>{{ subordinate.role }}</td>
                       <td>{{ subordinate.email }}</td>
                       <td>

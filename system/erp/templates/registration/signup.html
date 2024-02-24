@@ -55,8 +55,12 @@
 
   {{ form.last_name.label_tag }}
   {{ form.last_name }}
-  {{ form.last_name.errors }} <!-- Вывод ошибок для поля last_name -->
-
+  {{ form.last_name.errors }}<!-- Вывод ошибок для поля last_name -->
+<br>
+  {{ form.role.label_tag }}
+  {{ form.role }}
+  {{ form.role.errors }}
+<br><br>
   {{ form.password1.label_tag }}
   {{ form.password1 }}
   {{ form.password1.errors }} <!-- Вывод ошибок для поля password1 -->

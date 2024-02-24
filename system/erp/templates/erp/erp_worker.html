@@ -33,8 +33,9 @@
                     <ul class="list-group">
                     {% for task in tasks %}
                     {% if task.status == 'waits'%}
+                    Описание задачи:
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Описание задачи:<br> {{task.description}}<br><br>
+                             {{task.description}}<br><br>
                             Выдана:<br> {{ task.created_at|date:"d F Y, H:i" }}<br>
                             {% if now_user.role != 'director' %}
                                 <button class="btn btn-primary btn-sm" onclick="takeTask('{{ task.id }}')">Взять в работу</button>
@@ -94,7 +95,7 @@
     {% if now_user.role == 'director' %}
         <div class="row">
             <div class="col">
-                <button class="btn btn-primary btn-lg mt-4" onclick="window.location.href='/profile/'">Вернуться</button>
+                <button class="btn btn-primary btn-lg mt-4" onclick="window.location.href='/customers/'">Вернуться</button>
             </div>
         </div>
     {% endif %}
