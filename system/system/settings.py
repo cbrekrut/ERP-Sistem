@@ -19,6 +19,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'authentication',
+    'rest_framework',
     'erp',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -88,7 +90,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -105,7 +111,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/erp/static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = 'static/'
 
 # Default primary key field type
@@ -114,5 +120,5 @@ STATIC_ROOT = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Указываем модель пользователя и URL для авторизации
-AUTH_USER_MODEL = 'erp.CustomUser'
+AUTH_USER_MODEL = 'authentication.CustomUser'
 LOGIN_URL = 'login'

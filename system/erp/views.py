@@ -2,11 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_POST
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import login, logout, authenticate
-from .forms import CustomUserCreationForm, CustomAuthenticationForm
 from django.views.decorators.csrf import csrf_exempt
-from .models import CustomUser,Task
+from .models import Task
 from datetime import datetime
 from django.contrib import messages
 
@@ -53,21 +50,6 @@ def director_erp(request, email):
     return render(request, 'erp/erp_worker.html', {'user': user, 'tasks': tasks, 'now_user': now_user})
 
 
-def signup(request):
-    if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password1']
-            user = authenticate(request, email=email, password=password)
-            login(request, user)
-            return redirect('index')
-        else:
-            messages.error(request, 'Пожалуйста, исправьте ошибки в форме.')
-    else:
-        form = CustomUserCreationForm()
-    return render(request, 'registration/signup.html', {'form': form})
 
 
 @csrf_exempt
@@ -82,21 +64,3 @@ def change_task_status(request):
     task.save()
 
     return JsonResponse({'status': 'success'})
-
-def login_view(request):
-    if request.method == 'POST':
-        form = CustomAuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            email = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, email=email, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('erp')
-    else:
-        form = CustomAuthenticationForm()
-    return render(request, 'registration/login.html', {'form': form})
-
-def logout_view(request):
-    logout(request)
-    return redirect('index')

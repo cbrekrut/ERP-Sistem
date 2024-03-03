@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from .CustomUserManager import CustomUserManager
-from .Factory import Factory
+
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
@@ -10,8 +10,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=30)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    factory = models.ForeignKey(Factory, on_delete=models.CASCADE, null=True, blank=True)
-
+    
     ROLE_CHOICES = (
         ('director', 'Директор'),
         ('worker', 'Рабочий'),

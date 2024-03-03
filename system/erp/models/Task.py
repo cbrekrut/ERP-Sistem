@@ -1,5 +1,5 @@
 from django.db import models
-from .CustomUser import CustomUser
+from authentication.models.CustomUser import CustomUser
 
 class Task(models.Model):
     description = models.TextField()
